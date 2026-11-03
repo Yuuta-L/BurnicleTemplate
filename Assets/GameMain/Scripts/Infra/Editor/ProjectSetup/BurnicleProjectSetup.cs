@@ -76,7 +76,7 @@ namespace Template
 
             if (scenePath != null && !string.Equals(oldRoot, namespaceRoot, StringComparison.Ordinal))
             {
-                UpdateHelperTypeNames(scenePath, oldRoot, namespaceRoot, report);
+                UpdateSerializedTypeNames(scenePath, oldRoot, namespaceRoot, report);
                 RenameNamespaceRoot(oldRoot, namespaceRoot, report);
             }
 
@@ -165,9 +165,9 @@ namespace Template
         }
 
         /// <summary>
-        /// 把场景里以旧命名空间开头的字符串（各种 Helper 的类型全名）换成新命名空间。
+        /// 把场景里以旧命名空间开头的字符串（各种 Helper、流程的类型全名）换成新命名空间。
         /// </summary>
-        private static void UpdateHelperTypeNames(string scenePath, string oldRoot, string newRoot,
+        private static void UpdateSerializedTypeNames(string scenePath, string oldRoot, string newRoot,
             List<string> report)
         {
             var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);

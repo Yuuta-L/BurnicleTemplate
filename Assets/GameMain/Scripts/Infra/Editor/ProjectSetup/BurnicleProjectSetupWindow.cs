@@ -56,7 +56,7 @@ namespace Template
             _launchSceneName = EditorGUILayout.TextField("启动场景名", _launchSceneName);
             EditorGUILayout.HelpBox(
                 $"命名空间根会重写 {BurnicleProjectSetupService.ScriptsRoot} 下的源码命名空间，" +
-                "场景里各种 Helper 的类型全名也会一起改。\n" +
+                "场景里各种 Helper / 流程的类型全名也会一起改。\n" +
                 "场景文件名跟着「启动场景名」改，Build Settings 同步更新。", MessageType.None);
 
             if (record.Completed)
