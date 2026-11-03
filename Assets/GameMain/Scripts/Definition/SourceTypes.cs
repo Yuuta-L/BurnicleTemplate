@@ -1,0 +1,28 @@
+﻿namespace Template
+{
+    public enum SourceTypes
+    {
+        Unknown,
+        Recover,
+        GameSettle,
+        EnergyShop,
+        UpgradeGear,
+        UpgradeRelic,
+        Purchase,
+        Checkin,
+        BBQ,
+        Harvest,
+        DailyProduct,
+        DrawChest,
+        DrawRelic,
+        PassReward,
+        SideBar,
+        ShortcutGift,
+        RedeemCode,
+        Blessing,
+        GoldenTicket,
+        NewbieGift,
+        ManorProduct,
+        Other = 10001,
+    }
+}

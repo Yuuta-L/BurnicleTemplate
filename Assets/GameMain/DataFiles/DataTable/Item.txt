@@ -1,0 +1,37 @@
+﻿#	Item表				i18n	i18n				
+#	ID		Name	ValueRatio	ItemNameKey	ItemDesKey	IconAssetName	DefaultTier	ShowInInventory	IsPerfect
+#	int		string$	float	string	string	string	EndlessAbyss.Tiers	bool	bool
+#		备注	物品名	和水晶的价值比	物品多语言key	物品描述key	图标资源名	默认品质	是否显示在背包中	是否完美品质
+	1001	金币	Coin	0.01	Item.Name.Coin	Item.Des.Coin	item_icon_coin	Fine	False	False
+	1002	水晶	Crystal	1	Item.Name.Crystal	Item.Des.Crystal	item_icon_crystal	Legendary	False	False
+	1003	体力	Energy	10	Item.Name.Energy	Item.Des.Energy	item_icon_energy	Rare	False	False
+	1004	肥料	Manure	5	Item.Name.Manure	Item.Des.Manure	item_icon_manure	Rare	False	False
+	1005	共鸣石	EchoStone	8	Item.Name.EchoStone	Item.Des.EchoStone	item_icon_echostone	Epic	True	False
+	1006	勘探器	MineExplorer	15	Item.Name.MineExplorer	Item.Des.MineExplorer	item_icon_mineexplorer	Epic	False	False
+	1007	蓝晶币	KyaniteCoin	400	Item.Name.KyaniteCoin	Item.Des.KyaniteCoin	item_icon_kyanitecoin	Legendary	True	False
+	1008	庄园币	ManorCoin	2	Item.Name.ManorCoin	Item.Des.ManorCoin	item_icon_manorcoin	Epic	True	False
+	1009	巨龙宝藏券	DragonTreasureTicket	100	Item.Name.DragonTreasureTicket	Item.Des.DragonTreasureTicket	item_icon_dragontreasureticket	Epic	True	False
+	1010	精英挑战券	EliteChallengeTickect	100	Item.Name.EliteChallengeTickect	Item.Des.EliteChallengeTickect	item_icon_elitechallengetickect	Epic	True	False
+	1011	竞技场券	ArenaTicket	100	Item.Name.ArenaTicket	Item.Des.ArenaTicket	item_icon_arenaticket	Epic	True	False
+	1012	暗域探索券	DarkRealmTicket	100	Item.Name.DarkRealmTicket	Item.Des.DarkRealmTicket	item_icon_darkrealmticket	Epic	True	False
+	2001	普通宝箱钥匙	BrownKey	80	Item.Name.BrownKey	Item.Des.BrownKey	item_icon_brownkey	Rare	True	False
+	2002	高级宝箱钥匙	IronKey	300	Item.Name.IronKey	Item.Des.IronKey	item_icon_ironkey	Epic	True	False
+	2003	S级宝箱钥匙	GoldenKey	400	Item.Name.GoldenKey	Item.Des.GoldenKey	item_icon_goldenkey	Legendary	True	False
+	3001	武器升级图纸	WeaponBlueprint	8	Item.Name.WeaponBlueprint	Item.Des.WeaponBlueprint	item_icon_weaponblueprint	Rare	True	False
+	3002	项链升级图纸	AmuletBlueprint	8	Item.Name.AmuletBlueprint	Item.Des.AmuletBlueprint	item_icon_amuletblueprint	Rare	True	False
+	3003	戒指升级图纸	RingBlueprint	8	Item.Name.RingBlueprint	Item.Des.RingBlueprint	item_icon_ringblueprint	Rare	True	False
+	3004	头盔升级图纸	HelmetBlueprint	8	Item.Name.HelmetBlueprint	Item.Des.HelmetBlueprint	item_icon_helmetblueprint	Rare	True	False
+	3005	护甲升级图纸	ArmorBlueprint	8	Item.Name.ArmorBlueprint	Item.Des.ArmorBlueprint	item_icon_armorblueprint	Rare	True	False
+	3006	副手升级图纸	OffhandBlueprint	8	Item.Name.OffhandBlueprint	Item.Des.OffhandBlueprint	item_icon_offhandblueprint	Rare	True	False
+	4001	普通种子	CrudeSeed	10	Item.Name.CrudeSeed	Item.Des.CrudeSeed	item_icon_crudeseed	Crude	True	False
+	4002	稀有种子	RareSeed	30	Item.Name.RareSeed	Item.Des.RareSeed	item_icon_rareseed	Rare	True	False
+	4003	史诗种子	EpicSeed	120	Item.Name.EpicSeed	Item.Des.EpicSeed	item_icon_epicseed	Epic	True	False
+	4004	神话种子	LegendarySeed	350	Item.Name.LegendarySeed	Item.Des.LegendarySeed	item_icon_legendaryseed	Legendary	True	False
+	5001	未知升级图纸	UnknownBlueprint	8	Item.Name.UnknownBlueprint	Item.Des.UnknownBlueprint	item_icon_unknownblueprint	Rare	False	False
+	5002	未知1级宝石	UnknownGem	20	Item.Name.UnknownGem	Item.Des.UnknownGem	item_icon_unknowngem	Crude	False	False
+	5003	随机普通装备	UnknownCrudeGear	40	Item.Name.UnknownCrudeGear	Item.Des.UnknownCrudeGear	item_icon_unknowngear	Crude	False	False
+	5004	随机优秀装备	UnknownFineGear	120	Item.Name.UnknownFineGear	Item.Des.UnknownFineGear	item_icon_unknowngear	Fine	False	False
+	5005	随机稀有装备	UnknownRareGear	360	Item.Name.UnknownRareGear	Item.Des.UnknownRareGear	item_icon_unknowngear	Rare	False	False
+	5006	随机史诗装备	UnknownEpicGear	3000	Item.Name.UnknownEpicGear	Item.Des.UnknownEpicGear	item_icon_unknowngear	Epic	False	False
+	5007	随机S级Epic装备	UnknownEpicGearS	8000	Item.Name.UnknownEpicGearS	Item.Des.UnknownEpicGearS	item_icon_unknowngear	Epic	False	True
+	5008	随机S级Epic武器	UnknownEpicWeaponS	8000	Item.Name.UnknownEpicWeaponS	Item.Des.UnknownEpicWeaponS	item_icon_unknownweapon	Epic	False	True

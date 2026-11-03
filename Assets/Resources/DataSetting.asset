@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadFromBytes: 0
   _dataTables:
+  - Item
+  - Music
+  - Sound
   - UIForm
-  _configs: []
-  _languages: []
-  _dataObjects:
-  - Name: Demo
-    Path: Assets/GameMain/DataFiles/DataObject/Demo.asset
-    RowType: BurnicleFramework.AbilityGraph.GraphAsset
+  - Unlockable
+  _configs:
+  - GameConfig
+  _languages:
+  - ChineseSimplified
+  - English
+  _dataObjects: []

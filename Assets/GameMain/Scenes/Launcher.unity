@@ -362,76 +362,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2514697566182454742, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_JsonHelperTypeName
-      value: Template.NetJsonHelper
-      objectReference: {fileID: 0}
-    - target: {fileID: 5679567778667715756, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_UIFormHelperTypeName
-      value: Template.BurnicleUIFormHelper
-      objectReference: {fileID: 0}
-    - target: {fileID: 5679567778667715756, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_UIGroupHelperTypeName
-      value: Template.BurnicleUIGroupHelper
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_EntranceProcedureTypeName
-      value: Template.ProcedureSplash
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[0]
-      value: Template.ProcedureCheckResources
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[1]
-      value: Template.ProcedureCheckVersion
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[2]
-      value: Template.ProcedureInitResources
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[3]
-      value: Template.ProcedureLaunch
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[4]
-      value: Template.ProcedureMain
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[5]
-      value: Template.ProcedurePreload
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[6]
-      value: Template.ProcedureSplash
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[7]
-      value: Template.ProcedureUpdateResources
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[8]
-      value: Template.ProcedureUpdateVersion
-      objectReference: {fileID: 0}
-    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[9]
-      value: Template.ProcedureVerifyResources
-      objectReference: {fileID: 0}
-    - target: {fileID: 7983068798412005937, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      propertyPath: m_LocalizationHelperTypeName
-      value: Template.JsonLocalizationHelper
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 433714, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 663578772}
+    m_RemovedGameObjects:
+    - {fileID: 8609393610989589947, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
 --- !u!4 &511916861 stripped
@@ -439,53 +373,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 433714, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
   m_PrefabInstance: {fileID: 511916860}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &663578771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 663578772}
-  - component: {fileID: 663578773}
-  m_Layer: 0
-  m_Name: Redeem Code
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &663578772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663578771}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 511916861}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &663578773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663578771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1923a812e1c164dbee22eaae128ae5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsEnabled: 0
-  m_BaseUrl: https://gameapi.burniclegame.cn
-  m_RequestTimeout: 15
 --- !u!1 &896088059
 GameObject:
   m_ObjectHideFlags: 0

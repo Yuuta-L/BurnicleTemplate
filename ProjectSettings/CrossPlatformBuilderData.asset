@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dc9066968bed04d8fa85d0b54d9ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeConfigPath: Assets/BurnicleFramework/PlatformExtensions/Editor/Resources/PlatformConfigs/H5Game4399.asset
-  _selectedConfigPath: Assets/BurnicleFramework/PlatformExtensions/Editor/Resources/PlatformConfigs/H5Game4399.asset
+  _activeConfigPath: 
+  _selectedConfigPath: 
   _gameOrientation: 0
   _diagnosticBuild: 0
