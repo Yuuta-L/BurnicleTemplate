@@ -95,6 +95,11 @@ namespace Template
         /// 获取持久化数据组件。
         /// </summary>
         public static PersistentComponent Persistent {get; private set; }
+
+        /// <summary>
+        /// 获取兑换码组件。
+        /// </summary>
+        public static RedeemCodeComponent RedeemCode {get; private set; }
         /// <summary>
         /// 获取资源组件。
         /// </summary>
@@ -153,6 +158,7 @@ namespace Template
             ObjectPool = BurnicleFramework.Runtime.BurnicleEntry.GetComponent<ObjectPoolComponent>();
             Procedure = BurnicleFramework.Runtime.BurnicleEntry.GetComponent<ProcedureComponent>();
             Persistent = BurnicleFramework.Runtime.BurnicleEntry.GetComponent<PersistentComponent>();
+            RedeemCode = BurnicleFramework.Runtime.BurnicleEntry.GetComponent<RedeemCodeComponent>();
             Resource = BurnicleFramework.Runtime.BurnicleEntry.GetComponent<ResourceComponent>();
             Scene = BurnicleFramework.Runtime.BurnicleEntry.GetComponent<SceneComponent>();
             Setting = BurnicleFramework.Runtime.BurnicleEntry.GetComponent<SettingComponent>();

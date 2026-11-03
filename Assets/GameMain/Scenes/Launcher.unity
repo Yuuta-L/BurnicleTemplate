@@ -428,7 +428,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 433714, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663578772}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
 --- !u!4 &511916861 stripped
@@ -436,6 +439,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 433714, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
   m_PrefabInstance: {fileID: 511916860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &663578771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 663578772}
+  - component: {fileID: 663578773}
+  m_Layer: 0
+  m_Name: Redeem Code
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &663578772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663578771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 511916861}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &663578773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663578771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1923a812e1c164dbee22eaae128ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsEnabled: 0
+  m_BaseUrl: https://gameapi.burniclegame.cn
+  m_RequestTimeout: 15
 --- !u!1 &896088059
 GameObject:
   m_ObjectHideFlags: 0
