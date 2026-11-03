@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e0103d0a6cf7f499471ab2f4f74182, type: 3}
+  m_Name: DataSetting
+  m_EditorClassIdentifier: 
+  _loadFromBytes: 0
+  _dataTables:
+  - AffixType
+  - Aspect
+  - EliteAspect
+  - Enemy
+  - EnemyPassive
+  - EnemySkill
+  - Gear
+  - Gem
+  - Item
+  - ManorShopProduct
+  - Music
+  - Passive
+  - Relic
+  - RoomEvent
+  - RoomEventBlade
+  - RoomEventMysteryBox
+  - RoomEventPotion
+  - RoomEventWheel
+  - Rune
+  - ShopDailyProduct
+  - Skill
+  - Sound
+  - StatType
+  - Status
+  - UIForm
+  - Unlockable
+  _configs:
+  - GameConfig
+  _languages:
+  - ChineseSimplified
+  _dataObjects:
+  - Name: Aspect
+    Path: Assets/GameMain/DataFiles/DataObject/Aspect.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: BlessingConfig
+    Path: Assets/GameMain/DataFiles/DataObject/BlessingConfig.asset
+    RowType: EndlessAbyss.BlessingLevelConfig
+  - Name: CustomPower
+    Path: Assets/GameMain/DataFiles/DataObject/CustomPower.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: EliteAspect
+    Path: Assets/GameMain/DataFiles/DataObject/EliteAspect.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: EnemyAI
+    Path: Assets/GameMain/DataFiles/DataObject/EnemyAI.asset
+    RowType: Kurisu.AkiBT.BehaviorTreeAsset
+  - Name: EnemyPassive
+    Path: Assets/GameMain/DataFiles/DataObject/EnemyPassive.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: EnemySkill
+    Path: Assets/GameMain/DataFiles/DataObject/EnemySkill.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: GearAffixSet
+    Path: Assets/GameMain/DataFiles/DataObject/GearAffixSet.asset
+    RowType: EndlessAbyss.GearAffixSet
+  - Name: Macro
+    Path: Assets/GameMain/DataFiles/DataObject/Macro.asset
+    RowType: BurnicleFramework.BehaviorFlow.MacroAsset
+  - Name: Passive
+    Path: Assets/GameMain/DataFiles/DataObject/Passive.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: Projectile
+    Path: Assets/GameMain/DataFiles/DataObject/Projectile.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: RelicAffixSet
+    Path: Assets/GameMain/DataFiles/DataObject/RelicAffixSet.asset
+    RowType: EndlessAbyss.RelicAffixSet
+  - Name: Rune
+    Path: Assets/GameMain/DataFiles/DataObject/Rune.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: Skill
+    Path: Assets/GameMain/DataFiles/DataObject/Skill.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: Status
+    Path: Assets/GameMain/DataFiles/DataObject/Status.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: Talent
+    Path: Assets/GameMain/DataFiles/DataObject/Talent.asset
+    RowType: BurnicleFramework.BehaviorFlow.AbilityAsset
+  - Name: TutorialConfig
+    Path: Assets/GameMain/DataFiles/DataObject/TutorialConfig.asset
+    RowType: EndlessAbyss.TutorialConfig
