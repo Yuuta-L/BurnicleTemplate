@@ -1,0 +1,6 @@
+﻿#	界面配置表								
+#	Id		AssetName	UIGroupName	Depth	AllowMultiInstance	PauseCoveredUIForm	ShowScreenDim	AllowEscapeClose
+#	int		string$	string	int	bool	bool	bool	bool
+#	界面编号	策划备注	界面名称	界面组名称	界面位于组中深度	是否允许多个界面实例	是否暂停被其覆盖的界面	是否显示屏幕遮罩	是否允许返回关闭
+	1	加载页面	LoadingForm	Top	1	False	True	False	False
+	1001	主界面	MainForm	Default	0	False	True	False	False
