@@ -366,6 +366,10 @@ PrefabInstance:
       propertyPath: m_JsonHelperTypeName
       value: Template.NetJsonHelper
       objectReference: {fileID: 0}
+    - target: {fileID: 7983068798412005937, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_LocalizationHelperTypeName
+      value: Template.JsonLocalizationHelper
+      objectReference: {fileID: 0}
     - target: {fileID: 5679567778667715756, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
       propertyPath: m_UIFormHelperTypeName
       value: Template.BurnicleUIFormHelper
