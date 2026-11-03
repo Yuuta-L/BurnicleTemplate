@@ -8,7 +8,7 @@ namespace Template
     /// </summary>
     public class BurnicleProjectSetupWindow : EditorWindow
     {
-        private const string MenuPath = "Tools/Burnicle/新建项目设置";
+        private const string MenuPath = "Burnicle/新建项目设置";
 
         private string _productName;
         private string _companyName;
@@ -16,7 +16,7 @@ namespace Template
         private string _namespaceRoot;
         private string _launchSceneName;
 
-        [MenuItem(MenuPath)]
+        [MenuItem(MenuPath, false, 1)]
         public static void Open()
         {
             var window = GetWindow<BurnicleProjectSetupWindow>("新建项目设置");
