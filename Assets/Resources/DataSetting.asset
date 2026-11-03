@@ -17,4 +17,7 @@ MonoBehaviour:
   - UIForm
   _configs: []
   _languages: []
-  _dataObjects: []
+  _dataObjects:
+  - Name: Demo
+    Path: Assets/GameMain/DataFiles/DataObject/Demo.asset
+    RowType: BurnicleFramework.AbilityGraph.GraphAsset
