@@ -362,6 +362,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2514697566182454742, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_JsonHelperTypeName
+      value: Template.NetJsonHelper
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679567778667715756, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_UIFormHelperTypeName
+      value: Template.BurnicleUIFormHelper
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679567778667715756, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_UIGroupHelperTypeName
+      value: Template.BurnicleUIGroupHelper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[0]
+      value: Template.ProcedureCheckResources
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[1]
+      value: Template.ProcedureCheckVersion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[2]
+      value: Template.ProcedureInitResources
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[3]
+      value: Template.ProcedureLaunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[4]
+      value: Template.ProcedureMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[5]
+      value: Template.ProcedurePreload
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[6]
+      value: Template.ProcedureSplash
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[7]
+      value: Template.ProcedureUpdateResources
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[8]
+      value: Template.ProcedureUpdateVersion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[9]
+      value: Template.ProcedureVerifyResources
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338232541310289446, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
+      propertyPath: m_EntranceProcedureTypeName
+      value: Template.ProcedureSplash
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8609393610989589947, guid: 0b466b41d43217d40a57046e5e2106a1, type: 3}
