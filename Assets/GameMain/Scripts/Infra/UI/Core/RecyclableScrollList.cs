@@ -43,7 +43,6 @@ namespace Template
     private float _cachedItemWidth;
     private float _cachedItemHeight;
     private bool _sizeInitialized;
-    private bool _isReady;
 
     private readonly List<ItemRecord> _activeItems = new List<ItemRecord>();
     private readonly Stack<UIItemBase> _itemPool = new Stack<UIItemBase>();
@@ -121,7 +120,6 @@ namespace Template
 
         private void Start()
         {
-            _isReady = true;
             if (!_sizeInitialized && itemPrefab != null)
             {
                 InitItemSize();

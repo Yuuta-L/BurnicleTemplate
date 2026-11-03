@@ -45,7 +45,12 @@ namespace Template
         
         private void Start()
         {
-            closeButton.onClick.AddListener(OnCloseButtonClick);
+            // closeButton 是可选的 UI 元素：模板默认不给启动界面返回按钮
+            if (closeButton != null)
+            {
+                closeButton.onClick.AddListener(OnCloseButtonClick);
+            }
+
             UpdateText();
         }
 
