@@ -40,9 +40,9 @@ namespace Template
             Burnicle.Event.Subscribe(DownloadSuccessEventArgs.EventId, OnDownloadSuccess);
             Burnicle.Event.Subscribe(DownloadFailureEventArgs.EventId, OnDownloadFailure);
 
-            if (LaunchForm.I != null)
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetProgress(0f, Burnicle.Localization.GetString("Launch.Tip.FetchingVersion"));
+                Launch.View.ShowProgress(0f, Burnicle.Localization.GetString("Launch.Tip.FetchingVersion"));
             }
 
             Log.Info("[Cache] 开始从 CDN 下载版本列表: 期望长度={0}, 期望压缩长度={1}, 压缩Hash=0x{2:x8}",
@@ -74,9 +74,9 @@ namespace Template
         private void OnUpdateVersionListSuccess(string downloadPath, string downloadUri)
         {
             m_UpdateVersionComplete = true;
-            if (LaunchForm.I != null)
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetProgress(1f, Burnicle.Localization.GetString("Launch.Tip.VersionFetched"));
+                Launch.View.ShowProgress(1f, Burnicle.Localization.GetString("Launch.Tip.VersionFetched"));
             }
             Log.Info("[Cache] 版本列表下载成功: '{0}' -> 已写入读写区缓存 '{1}'", downloadUri, downloadPath);
         }
@@ -84,19 +84,19 @@ namespace Template
         private void OnUpdateVersionListFailure(string downloadUri, string errorMessage)
         {
             Log.Warning("[Cache] 版本列表下载失败: '{0}', 错误: {1}", downloadUri, errorMessage);
-            if (LaunchForm.I != null)
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetTipText(Burnicle.Localization.GetString("Launch.Tip.FetchVersionFailedRetry"));
+                Launch.View.SetTip(Burnicle.Localization.GetString("Launch.Tip.FetchVersionFailedRetry"));
             }
         }
 
         private void OnDownloadUpdate(object sender, GameEventArgs e)
         {
             DownloadUpdateEventArgs ne = (DownloadUpdateEventArgs)e;
-            if (m_VersionListCompressedLength > 0 && LaunchForm.I != null)
+            if (m_VersionListCompressedLength > 0 && Launch.View != null)
             {
                 float progress = (float)ne.CurrentLength / m_VersionListCompressedLength;
-                LaunchForm.I.SetProgress(Mathf.Clamp01(progress), Burnicle.Localization.GetString("Launch.Tip.FetchingVersion"));
+                Launch.View.ShowProgress(Mathf.Clamp01(progress), Burnicle.Localization.GetString("Launch.Tip.FetchingVersion"));
             }
         }
 

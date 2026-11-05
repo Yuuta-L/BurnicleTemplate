@@ -42,5 +42,17 @@
   "Common.TierName.Prestige": "",
   "Common.TierName.Rare": "",
   "Common.UnlockByGetGear": "",
-  "Common.UnlockByPassLevel": ""
+  "Common.UnlockByPassLevel": "",
+  "Launch.Tip.CheckingResources": "Checking for resource updates...",
+  "Launch.Tip.DownloadFailed": "Resource download failed",
+  "Launch.Tip.DownloadFailedRetry": "Resource download failed, retrying...",
+  "Launch.Tip.FetchVersionFailedRetry": "Failed to fetch version list, retrying...",
+  "Launch.Tip.FetchingVersion": "Fetching version list...",
+  "Launch.Tip.LoadingResources": "Loading resources...",
+  "Launch.Tip.UnstableNetwork": "Checking for resource updates failed, retrying...",
+  "Launch.Tip.UpdateComplete": "Resource update complete",
+  "Launch.Tip.VerificationComplete": "Resource verification complete",
+  "Launch.Tip.VerifyingResources": "Verifying resources...",
+  "Launch.Tip.VersionFetched": "Version list fetched",
+  "UpdateResource.Tips": "Downloading {2}/{3}"
 }

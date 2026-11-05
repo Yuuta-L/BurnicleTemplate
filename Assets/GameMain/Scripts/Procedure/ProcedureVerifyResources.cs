@@ -63,9 +63,9 @@ namespace Template
                 Log.Warning("[Cache] 资源校验完成: 共 {0} 个，校验成功 {1} 个，校验失败 {2} 个。结果: 存在失败（部分资源需重新下载）",
                     m_VerifyTotalCount, m_VerifySuccessCount, m_VerifyFailureCount);
             }
-            if (LaunchForm.I != null)
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetProgress(1f, Burnicle.Localization.GetString("Launch.Tip.VerificationComplete"));
+                Launch.View.ShowProgress(1f, Burnicle.Localization.GetString("Launch.Tip.VerificationComplete"));
             }
         }
 
@@ -73,9 +73,9 @@ namespace Template
         {
             ResourceVerifyStartEventArgs ne = (ResourceVerifyStartEventArgs)e;
             m_VerifyTotalCount = ne.Count;
-            if (LaunchForm.I != null)
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetProgress(0f, Burnicle.Localization.GetString("Launch.Tip.VerifyingResources"));
+                Launch.View.ShowProgress(0f, Burnicle.Localization.GetString("Launch.Tip.VerifyingResources"));
             }
             Log.Info("[Cache] 开始资源校验: 共 {0} 个资源，总大小 {1} 字节", ne.Count, ne.TotalLength);
         }
@@ -97,10 +97,10 @@ namespace Template
 
         private void UpdateProgress()
         {
-            if (m_VerifyTotalCount > 0 && LaunchForm.I != null)
+            if (m_VerifyTotalCount > 0 && Launch.View != null)
             {
                 float p = (float)(m_VerifySuccessCount + m_VerifyFailureCount) / m_VerifyTotalCount;
-                LaunchForm.I.SetProgress(Mathf.Clamp01(p), Burnicle.Localization.GetString("Launch.Tip.VerifyingResources"));
+                Launch.View.ShowProgress(Mathf.Clamp01(p), Burnicle.Localization.GetString("Launch.Tip.VerifyingResources"));
             }
         }
     }

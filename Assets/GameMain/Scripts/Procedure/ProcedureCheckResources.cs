@@ -19,9 +19,9 @@ namespace Template
             m_UpdateResourceCount = 0;
             m_UpdateResourceTotalCompressedLength = 0L;
 
-            if (LaunchForm.I != null)
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetProgress(0f, Burnicle.Localization.GetString("Launch.Tip.CheckingResources"));
+                Launch.View.ShowProgress(0f, Burnicle.Localization.GetString("Launch.Tip.CheckingResources"));
             }
 
             Burnicle.Resource.CheckResources(OnCheckResourcesComplete);

@@ -80,10 +80,10 @@ namespace Template
             float progressTotal = (float)m_TotalDownloadedBytes / m_UpdateTotalCompressedLength;
             string descriptionText = Burnicle.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(m_TotalDownloadedBytes), GetByteLengthString(m_UpdateTotalCompressedLength));
 
-            // 更新 LaunchForm 进度
-            if (LaunchForm.I != null)
+            // 更新启动界面进度
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetProgress(progressTotal, descriptionText);
+                Launch.View.ShowProgress(progressTotal, descriptionText);
             }
         }
 
@@ -127,9 +127,9 @@ namespace Template
             if (result)
             {
                 m_UpdateResourcesComplete = true;
-                if (LaunchForm.I != null)
+                if (Launch.View != null)
                 {
-                    LaunchForm.I.SetProgress(1f, Burnicle.Localization.GetString("Launch.Tip.UpdateComplete"));
+                    Launch.View.ShowProgress(1f, Burnicle.Localization.GetString("Launch.Tip.UpdateComplete"));
                 }
                 Log.Info("[Cache] 资源更新完成: 共需更新 {0} 个，成功 {1} 个（新下载资源已写入读写区缓存）", m_UpdateCount, m_UpdateSuccessCount);
 
@@ -330,18 +330,18 @@ namespace Template
             if (ne.RetryCount >= ne.TotalRetryCount)
             {
                 Log.Error("[Cache] 资源 '{0}' 下载失败（重试耗尽 {1}/{2}）: {3}", ne.Name, ne.RetryCount, ne.TotalRetryCount, ne.ErrorMessage);
-                if (LaunchForm.I != null)
+                if (Launch.View != null)
                 {
-                    LaunchForm.I.SetTipText(Burnicle.Localization.GetString("Launch.Tip.DownloadFailed"));
+                    Launch.View.SetTip(Burnicle.Localization.GetString("Launch.Tip.DownloadFailed"));
                 }
                 return;
             }
             else
             {
                 Log.Warning("[Cache] 资源 '{0}' 下载失败（重试 {1}/{2}）: {3}", ne.Name, ne.RetryCount, ne.TotalRetryCount, ne.ErrorMessage);
-                if (LaunchForm.I != null)
+                if (Launch.View != null)
                 {
-                    LaunchForm.I.SetTipText(Burnicle.Localization.GetString("Launch.Tip.DownloadFailedRetry"));
+                    Launch.View.SetTip(Burnicle.Localization.GetString("Launch.Tip.DownloadFailedRetry"));
                 }
             }
 

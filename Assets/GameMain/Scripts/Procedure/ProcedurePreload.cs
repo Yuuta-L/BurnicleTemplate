@@ -33,11 +33,17 @@ namespace Template
             _preloadTotalCount = 0;
             _isUnstableNetwork = false;
 
+            // 平台初始化：OnUpdate 要等 PlatformInitialized，没人调用就会一直卡在预加载
+            if (!Burnicle.CrossPlatform.PlatformInitialized)
+            {
+                Burnicle.CrossPlatform.Init(result => Log.Info("[Launch] 平台初始化结果: {0}", result));
+            }
+
             PreloadResources();
             
-            if (LaunchForm.I != null)
+            if (Launch.View != null)
             {
-                LaunchForm.I.SetProgress(0f, Burnicle.Localization.GetString("Launch.Tip.LoadingResources"));
+                Launch.View.ShowProgress(0f, Burnicle.Localization.GetString("Launch.Tip.LoadingResources"));
             }
         }
 
@@ -56,7 +62,7 @@ namespace Template
                 if (!_isUnstableNetwork)
                 {
                     var des = Burnicle.Localization.GetString("Launch.Tip.UnstableNetwork");
-                    LaunchForm.I.SetTipText(des);
+                    Launch.View?.SetTip(des);
                     _isUnstableNetwork = true;
                 }
                 return;
@@ -238,9 +244,9 @@ namespace Template
 
         private void UpdatePreloadProgress()
         {
-            if (LaunchForm.I == null || _preloadTotalCount <= 0) return;
+            if (Launch.View == null || _preloadTotalCount <= 0) return;
             float p = (float)_preloadCompletedCount / _preloadTotalCount;
-            LaunchForm.I.SetProgress(Mathf.Clamp01(p), Burnicle.Localization.GetString("Launch.Tip.LoadingResources"));
+            Launch.View.ShowProgress(Mathf.Clamp01(p), Burnicle.Localization.GetString("Launch.Tip.LoadingResources"));
         }
     }
 }
