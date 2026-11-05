@@ -37,11 +37,6 @@ namespace BurnicleFramework.Generated
         GemSystem = 2001,
 
         /// <summary>
-        /// 签到系统(回到主界面无干扰时解锁)
-        /// </summary>
-        Checkin = 2002,
-
-        /// <summary>
         /// 过关奖励
         /// </summary>
         PassReward = 2003,

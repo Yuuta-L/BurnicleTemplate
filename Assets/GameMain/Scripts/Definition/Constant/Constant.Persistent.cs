@@ -6,7 +6,6 @@
         {
             public const string FirstEnterGameFlag = "FirstEnterGameFlag";
             public const string PassRewardAcquiredTimes = "PassRewardAcquiredTimes";
-            public const string CheckinFormPopupFlag = "CheckinFormPopupFlag";
             public const string ShopRainbowPityTimes = "ShopRainbowPityTimes"; //商店彩虹箱保底计数
             public const string ShopRainbowSPityTimes = "ShopRainbowSPityTimes"; //商店彩虹箱S级装备保底计数
             public const string ShopObsidianPityTimes = "ShopObsidianPityTimes";//商店黑曜石箱保底计数

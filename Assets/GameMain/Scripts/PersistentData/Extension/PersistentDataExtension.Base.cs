@@ -164,36 +164,5 @@ namespace Template
         }
 
         #endregion
-        
-        /// <summary>
-        /// 获取已签到天数
-        /// </summary>
-        /// <param name="component"></param>
-        /// <returns></returns>
-        public static int GetCheckinDays(this PersistentComponent component)
-        {
-            var times = GetConstTimes(component, "TotalCheckinTimesKey");
-            return times % 6;
-        }
-        
-        /// <summary>
-        /// 获取今日已签到次数
-        /// </summary>
-        /// <param name="component"></param>
-        /// <returns></returns>
-        public static int GetTodayCheckinTimes(this PersistentComponent component)
-        {
-            return GetDailyTimes(component, "TodayCheckinTimesKey");
-        }
-
-        /// <summary>
-        /// 新增签到次数
-        /// </summary>
-        /// <param name="component"></param>
-        public static void AddCheckinTimes(this PersistentComponent component)
-        {
-            AddDailyTimes(component, "TodayCheckinTimesKey");
-            AddConstTimes(component, "TotalCheckinTimesKey");
-        }
     }
 }

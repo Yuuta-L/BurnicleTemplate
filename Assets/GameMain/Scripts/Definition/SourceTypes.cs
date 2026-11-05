@@ -9,7 +9,6 @@
         UpgradeGear,
         UpgradeRelic,
         Purchase,
-        Checkin,
         BBQ,
         Harvest,
         DailyProduct,

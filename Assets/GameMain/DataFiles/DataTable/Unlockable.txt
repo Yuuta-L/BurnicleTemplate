@@ -7,7 +7,6 @@
 	1003	主界面庄园界面	ManorPanel	UI/UISprites/Main/MainForm/ItemIcon_Manor	UI.BottomMenu.Manor	PassLevel	5
 	1004	冒险界面	AdventurePanel	UI/UISprites/Main/MainForm/ItemIcon_Adventure	UI.BottomMenu.Adventure	PassLevel	10
 	2001	宝石系统(获得第一颗宝石时解锁,8关后产出宝石)	GemSystem	UI/UISprites/Main/MainForm/function_icon_gem	UI.Gem.EntryName	Custom	
-	2002	签到系统(回到主界面无干扰时解锁)	Checkin	UI/UISprites/Main/MainForm/ItemIcon_File	UI.Checkin.EntryName	Custom	
 	2003	过关奖励	PassReward	UI/UISprites/Main/MainForm/ItemIcon_Chest_Gold	UI.PassReward.Title	PassLevel	1
 	2004	每日奖励(回到主界面无干扰且签到已解锁时解锁)	DailyReward	UI/UISprites/Main/MainForm/ItemIcon_Gift_Daily	UI.DailyRewards.EntryName	PassLevel	5
 	2005	成长界面	GrowUp	UI/UISprites/GrowUp/growup_icon_power	UI.Common.Grow	PassLevel	3

@@ -15,7 +15,7 @@ MonoBehaviour:
   DataTableExportFolder: Assets/GameMain/DataFiles/DataTable
   LocalizationExportFolder: Assets/GameMain/DataFiles/Localization
   ConfigExportFolder: Assets/GameMain/DataFiles/Config
-  CSharpCodeExportFolder: Assets/GameMain/Scripts/Data
+  CSharpCodeExportFolder: Assets/GameMain/Scripts/DataTable
   DataTableCodeTemplatePath: Assets/BurnicleFramework/EditorResources/DefaultDataTableCodeTemplate.txt
   ConfigExtensionCodeTemplatePath: Assets/BurnicleFramework/EditorResources/DefaultConfigExtensionCodeTemplate.txt
   EnumCodeTemplatePath: Assets/BurnicleFramework/EditorResources/DefaultDataTableEnumCodeTemplate.txt

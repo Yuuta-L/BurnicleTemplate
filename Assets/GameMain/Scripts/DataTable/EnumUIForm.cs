@@ -47,11 +47,6 @@ namespace BurnicleFramework.Generated
         ShopForm = 1006,
 
         /// <summary>
-        /// 签到界面
-        /// </summary>
-        CheckinForm = 1007,
-
-        /// <summary>
         /// 获取奖励界面
         /// </summary>
         AcquireRewardForm = 1008,

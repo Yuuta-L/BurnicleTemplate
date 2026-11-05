@@ -9,7 +9,6 @@
 	1004	游戏界面	GameForm	Default	0	False	True	False	False
 	1005	游戏结果界面	GameResultForm	Popup	0	False	False	True	False
 	1006	商店界面	ShopForm	Default	0	False	True	False	False
-	1007	签到界面	CheckinForm	Popup	0	False	True	True	False
 	1008	获取奖励界面	AcquireRewardForm	Popup	0	False	True	True	False
 	1009	弹出框	DialogForm	Top	2	False	True	True	False
 	1010	游戏暂停界面	PauseForm	Popup	1	False	True	True	False
