@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改
-// 生成时间：2026-11-03 13:20:34.787
+// 生成时间：2026-11-07 13:48:17.043
 //------------------------------------------------------------
 
 using System;
@@ -13,6 +13,19 @@ namespace BurnicleFramework.Generated
 {
 	public static partial class DataTableParserExtension
 	{
+		public static float[] ParseSingleArray(this string value)
+		{
+			if (string.IsNullOrEmpty(value) || value.ToLowerInvariant().Equals("null"))
+				return null;
+			string[] splitValue = value.Split(',');
+			float[] array = new float[splitValue.Length];
+			for (int i = 0; i < splitValue.Length; i++)
+			{
+				array[i] = Single.Parse(splitValue[i]);
+			}
+
+			return array;
+		}
 		public static int[] ParseInt32Array(this string value)
 		{
 			if (string.IsNullOrEmpty(value) || value.ToLowerInvariant().Equals("null"))
@@ -35,19 +48,6 @@ namespace BurnicleFramework.Generated
 			for (int i = 0; i < splitValue.Length; i++)
 			{
 				array[i] = splitValue[i];
-			}
-
-			return array;
-		}
-		public static float[] ParseSingleArray(this string value)
-		{
-			if (string.IsNullOrEmpty(value) || value.ToLowerInvariant().Equals("null"))
-				return null;
-			string[] splitValue = value.Split(',');
-			float[] array = new float[splitValue.Length];
-			for (int i = 0; i < splitValue.Length; i++)
-			{
-				array[i] = Single.Parse(splitValue[i]);
 			}
 
 			return array;

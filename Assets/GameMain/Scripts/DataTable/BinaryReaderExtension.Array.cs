@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改
-// 生成时间：2026-11-03 13:20:34.794
+// 生成时间：2026-11-07 13:48:17.049
 //------------------------------------------------------------
 
 using System;
@@ -13,6 +13,16 @@ namespace BurnicleFramework.Generated
 {
 	public static partial class BinaryReaderExtension
 	{
+		public static float[] ReadSingleArray(this BinaryReader binaryReader)
+		{
+			int count = binaryReader.Read7BitEncodedInt32();
+			float[] array = new float[count];
+			for (int i = 0; i < count; i++)
+			{
+				array[i] = binaryReader.ReadSingle();
+			}
+			return array;
+		}
 		public static int[] ReadInt32Array(this BinaryReader binaryReader)
 		{
 			int count = binaryReader.Read7BitEncodedInt32();
@@ -30,16 +40,6 @@ namespace BurnicleFramework.Generated
 			for (int i = 0; i < count; i++)
 			{
 				array[i] = binaryReader.ReadString();
-			}
-			return array;
-		}
-		public static float[] ReadSingleArray(this BinaryReader binaryReader)
-		{
-			int count = binaryReader.Read7BitEncodedInt32();
-			float[] array = new float[count];
-			for (int i = 0; i < count; i++)
-			{
-				array[i] = binaryReader.ReadSingle();
 			}
 			return array;
 		}

@@ -4,19 +4,7 @@
 #	可解锁项编号	策划备注	解锁项名称	显示图标资源名	显示功能名	解锁方式	解锁参数
 	1001	主界面商店界面	ShopPanel	UI/UISprites/Main/MainForm/ItemIcon_Shop	UI.BottomMenu.Shop	PassLevel	2
 	1002	主界面装备界面(从关卡奖励中获得装备后解锁)	GearPanel	UI/UISprites/Main/MainForm/ItemIcon_Gear	UI.BottomMenu.Gear	Custom	
-	1003	主界面庄园界面	ManorPanel	UI/UISprites/Main/MainForm/ItemIcon_Manor	UI.BottomMenu.Manor	PassLevel	5
 	1004	冒险界面	AdventurePanel	UI/UISprites/Main/MainForm/ItemIcon_Adventure	UI.BottomMenu.Adventure	PassLevel	10
-	2001	宝石系统(获得第一颗宝石时解锁,8关后产出宝石)	GemSystem	UI/UISprites/Main/MainForm/function_icon_gem	UI.Gem.EntryName	Custom	
 	2003	过关奖励	PassReward	UI/UISprites/Main/MainForm/ItemIcon_Chest_Gold	UI.PassReward.Title	PassLevel	1
-	2004	每日奖励(回到主界面无干扰且签到已解锁时解锁)	DailyReward	UI/UISprites/Main/MainForm/ItemIcon_Gift_Daily	UI.DailyRewards.EntryName	PassLevel	5
 	2005	成长界面	GrowUp	UI/UISprites/GrowUp/growup_icon_power	UI.Common.Grow	PassLevel	3
 	2006	扫荡界面	Sweep	UI/UISprites/Main/MainForm/function_icon_sweep	UI.Sweep.EntryName	PassLevel	8
-	2007	先祖遗产	GoldenTicket	UI/UISprites/Main/MainForm/ItemIcon_Ticket_Gold	UI.GoldenTicket.EntryName	PassLevel	4
-	2008	启程礼包	NewbieGift	UI/UISprites/Main/MainForm/ItemIcon_Gift_Newbie	UI.NewbieGift.EntryName	PassLevel	2
-	2009	矿场	Mine	UI/UISprites/Main/Mine/mine_item_crystal	UI.Main.Manor.Mine	PassLevel	7
-	2010	遗物	Relic	UI/UISprites/Main/MainForm/function_icon_relic	UI.Relic.EntryName	PassLevel	12
-	2011	远古宝匣	RelicBox	UI/UISprites/Main/MainForm/Chest_Relic	UI.Main.Shop.Relic.Title	PassLevel	12
-	2012	精英挑战	EliteChallenge	UI/UISprites/Main/MainForm/Chest_Relic	UI.Adventure.EliteChallenge.Title	Custom	
-	2013	竞技场	Arena	UI/UISprites/Main/MainForm/Chest_Relic	UI.Adventure.Arena.Title	Custom	
-	2014	宝石共鸣	GemEcho	UI/UISprites/Gem/function_icon_echo	UI.GemEcho.Title	Custom	
-	2015	暗域探险	DarkRealm	UI/UISprites/Main/MainForm/Chest_Relic	UI.Adventure.DarkRealm.Title	Custom	
