@@ -7,7 +7,7 @@ namespace Template
 {
     public static partial class PersistentDataExtension
     {
-        public static bool AddItem(this PersistentComponent component,SourceTypes sourceType,EnumItem itemType, bool isFragment, int number)
+        public static bool AddItem(this PersistentComponent component, EnumItem itemType, int number)
         {
             if (number == 0)
             {
@@ -20,17 +20,17 @@ namespace Template
                 return false;
             }
 
-            if (InternalChangeItem(component, itemType, number, isFragment,false))
+            if (InternalChangeItem(component, itemType, number, false))
             {
                 component.SaveData<ResourceData>();
-                Burnicle.Event.Fire(null,BatchWealthChangeEventArgs.Create(WealthTypes.Item,(int)itemType,isFragment,number));
+                Burnicle.Event.Fire(null, BatchWealthChangeEventArgs.Create(WealthTypes.Item, (int)itemType, number));
                 return true;
             }
             
             return false;
         }
         
-        public static bool SetItem(this PersistentComponent component,SourceTypes sourceType,EnumItem itemType, bool isFragment, int number)
+        public static bool SetItem(this PersistentComponent component, EnumItem itemType, int number)
         {           
             if (number == 0)
             {
@@ -43,16 +43,16 @@ namespace Template
                 return false;
             }
 
-            if (InternalChangeItem(component, itemType, number, isFragment, true))
+            if (InternalChangeItem(component, itemType, number, true))
             {
                 component.SaveData<ResourceData>();
-                Burnicle.Event.Fire(null,BatchWealthChangeEventArgs.Create(WealthTypes.Item,(int)itemType,isFragment, -number));
+                Burnicle.Event.Fire(null, BatchWealthChangeEventArgs.Create(WealthTypes.Item, (int)itemType, -number));
                 return true;
             }
             return false;
         }
 
-        public static bool RemoveItem(this PersistentComponent component,SourceTypes sourceType,EnumItem itemType, bool isFragment, int number)
+        public static bool RemoveItem(this PersistentComponent component, EnumItem itemType, int number)
         {
             if (number == 0)
             {
@@ -65,10 +65,10 @@ namespace Template
                 return false;
             }
 
-            if (InternalChangeItem(component, itemType, -number, isFragment, false))
+            if (InternalChangeItem(component, itemType, -number, false))
             {
                 component.SaveData<ResourceData>();
-                Burnicle.Event.Fire(null,BatchWealthChangeEventArgs.Create(WealthTypes.Item,(int)itemType,isFragment,-number));
+                Burnicle.Event.Fire(null, BatchWealthChangeEventArgs.Create(WealthTypes.Item, (int)itemType, -number));
                 return true;
             }
             return false;
@@ -107,7 +107,7 @@ namespace Template
             {
                 var result = Mathf.Clamp(currentEnergy + recoverNumber, 0, energyMax);
                 data.LastRecoverEnergyTimeStamp += recoverNumber * recoverTimePerEnergy;
-                SetItem(component, SourceTypes.Recover, EnumItem.Energy, false, result);
+                SetItem(component, EnumItem.Energy, result);
             }
         }
         
@@ -131,42 +131,8 @@ namespace Template
         }
 #endregion
 
-        public static void AddReward(this PersistentComponent component,SourceTypes sourceType, RewardInfo reward)
-        {
-            var data = component.GetData<ResourceData>();
-            InternalAddReward(component, sourceType, reward);
-            Burnicle.Event.Fire(null, BatchWealthChangeEventArgs.Create(reward.RewardType, reward.RewardId, reward.IsFragment, reward.Quantity));
-            data.Save();
-        }
-
-        public static void AddRewards(this PersistentComponent component,SourceTypes sourceType, RewardCollection rewards)
-        {
-            var data = component.GetData<ResourceData>();
-            var eventArgs = BatchWealthChangeEventArgs.Create();
-            foreach (var reward in rewards.Rewards)
-            {
-                InternalAddReward(component, sourceType, reward);
-                eventArgs.Changes.Add(new WealthChangeInfo(reward.RewardType, reward.RewardId,reward.IsFragment,reward.Quantity));
-            }
-            Burnicle.Event.Fire(null, eventArgs);
-            data.Save();
-        }
-
 #region Internal
-        private static void InternalAddReward(PersistentComponent component,SourceTypes sourceType,RewardInfo reward)
-        {
-            if (reward.RewardType == WealthTypes.Unknown || reward.Quantity <= 0)
-            {
-                return;
-            }
-
-            if (reward.RewardType == WealthTypes.Item)
-            {
-                InternalChangeItem(component, (EnumItem)reward.RewardId, reward.Quantity,reward.IsFragment, false);
-            }
-        }
-
-        private static bool InternalChangeItem(PersistentComponent component, EnumItem itemType, int number, bool isFragment, bool isSet)
+        private static bool InternalChangeItem(PersistentComponent component, EnumItem itemType, int number, bool isSet)
         {
             var currencyData = component.GetData<ResourceData>();
             if (currencyData.OwnedItems == null)

@@ -8,14 +8,12 @@ namespace Template
     {
         public WealthTypes Type;
         public int Id;
-        public bool IsFragment;
         public int Delta;
 
-        public WealthChangeInfo(WealthTypes type, int id, bool isFragment, int delta)
+        public WealthChangeInfo(WealthTypes type, int id, int delta)
         {
             Type = type;
             Id = id;
-            IsFragment = isFragment;
             Delta = delta;
         }
     }
@@ -38,10 +36,10 @@ namespace Template
             return e;
         }
 
-        public static BatchWealthChangeEventArgs Create(WealthTypes wealthType, int wealthId, bool isFragment, int delta)
+        public static BatchWealthChangeEventArgs Create(WealthTypes wealthType, int wealthId, int delta)
         {
             var e = Create();
-            e.Changes.Add(new WealthChangeInfo(wealthType, wealthId, isFragment, delta));
+            e.Changes.Add(new WealthChangeInfo(wealthType, wealthId, delta));
             return e;
         }
 
