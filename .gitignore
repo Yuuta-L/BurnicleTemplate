@@ -60,3 +60,8 @@ Directory.Build.props
 # 本地工具目录
 /Locus
 node_modules
+
+# Packages 只入库 UPM 清单本身；装进来的包（本地包 / 缓存包）是本地环境，不入库
+/Packages/*
+!/Packages/manifest.json
+!/Packages/packages-lock.json
