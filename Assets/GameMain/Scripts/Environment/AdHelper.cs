@@ -1,6 +1,4 @@
 ﻿using System;
-using BurnicleFramework.Generated;
-using BurnicleFramework.UtilityPack;
 using UnityEngine;
 using BurnicleFramework.Runtime;
 
