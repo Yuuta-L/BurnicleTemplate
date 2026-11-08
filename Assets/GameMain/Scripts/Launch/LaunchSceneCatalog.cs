@@ -6,7 +6,7 @@ namespace Template
     /// <summary>
     /// 可进入场景的来源：固定名字的目录（<see cref="ScanRoots"/>）下的所有场景，不看 Build Settings。
     /// <para>
-    /// 新场景放进 <c>Assets/GameMain</c>（或可选包的 <c>Assets/BurnicleFramework/UtilityBundles/Extracted/&lt;包&gt;/Sample/</c>），
+    /// 新场景放进 <c>Assets/GameMain</c>（或可选包的 <c>Assets/BurnicleFramework/UtilityPacks/Extracted/&lt;包&gt;/Sample/</c>），
     /// 就会自动出现在启动界面的入口列表里，不需要手工往 Build Settings 拖。
     /// </para>
     /// <para>编辑器里用 AssetDatabase 扫目录；构建出来的包里没有 AssetDatabase，退回读 Build Settings。</para>
