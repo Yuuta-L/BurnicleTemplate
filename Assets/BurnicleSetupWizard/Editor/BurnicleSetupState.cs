@@ -9,8 +9,11 @@ using System.IO;
 internal sealed class BurnicleSetupData
 {
     public string ProductName = "Burnicle Template";
-    public string CompanyName = "DefaultCompany";
-    public string BundleIdentifier = "com.defaultcompany.template";
+    public string CompanyName = "Burnicle";
+
+    // 只读派生值，界面上不手填
+    public string BundleIdentifier =
+        BurnicleProjectSetupService.BuildBundleIdentifier("Burnicle", "Burnicle Template");
     public string NamespaceRoot = "Template";
     public string LaunchSceneName = "Launcher";
     public string AppliedAt = "";

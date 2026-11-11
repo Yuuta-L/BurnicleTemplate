@@ -29,6 +29,39 @@ public static class BurnicleProjectSetupService
     }
 
     /// <summary>
+    /// 包名不单独输入，固定按 com.{公司名}.{项目名} 组合。
+    /// </summary>
+    public static string BuildBundleIdentifier(string companyName, string productName)
+    {
+        return $"com.{ToIdentifierPart(companyName, "company")}.{ToIdentifierPart(productName, "app")}";
+    }
+
+    private static string ToIdentifierPart(string value, string fallback)
+    {
+        var builder = new StringBuilder();
+        foreach (var c in value ?? string.Empty)
+        {
+            if (c < 128 && (char.IsLetterOrDigit(c) || c == '_'))
+            {
+                builder.Append(char.ToLowerInvariant(c));
+            }
+        }
+
+        if (builder.Length == 0)
+        {
+            return fallback;
+        }
+
+        // 段首必须是字母
+        if (char.IsDigit(builder[0]))
+        {
+            builder.Insert(0, 'p');
+        }
+
+        return builder.ToString();
+    }
+
+    /// <summary>
     /// 统计命名空间根改名会改写的源文件数（只统计，不改动）。
     /// </summary>
     public static int CountFilesWithNamespaceRoot(string root)
@@ -54,7 +87,7 @@ public static class BurnicleProjectSetupService
     /// <summary>
     /// 应用设置，返回逐条改动说明。
     /// </summary>
-    public static List<string> Apply(string productName, string companyName, string bundleIdentifier,
+    public static List<string> Apply(string productName, string companyName,
         string namespaceRoot, string launchSceneName)
     {
         var report = new List<string>();
@@ -84,6 +117,7 @@ public static class BurnicleProjectSetupService
         var newScenePath = $"{ScenesFolder}/{launchSceneName}.unity";
         var scenePath = RenameLaunchScene(oldScenePath, newScenePath, report);
 
+        var bundleIdentifier = BuildBundleIdentifier(companyName, productName);
         ApplyPlayerSettings(productName, companyName, bundleIdentifier, report);
 
         if (scenePath != null && !string.Equals(oldRoot, namespaceRoot, StringComparison.Ordinal))

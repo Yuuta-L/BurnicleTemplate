@@ -76,9 +76,16 @@ public class BurnicleSetupWizardWindow : EditorWindow
         EditorGUILayout.LabelField("1. 项目信息", s_SectionStyle);
         _data.ProductName = EditorGUILayout.TextField("产品名", _data.ProductName);
         _data.CompanyName = EditorGUILayout.TextField("公司名", _data.CompanyName);
-        _data.BundleIdentifier = EditorGUILayout.TextField("包名", _data.BundleIdentifier);
+        _data.BundleIdentifier =
+            BurnicleProjectSetupService.BuildBundleIdentifier(_data.CompanyName, _data.ProductName);
+        using (new EditorGUI.DisabledScope(true))
+        {
+            EditorGUILayout.TextField("包名", _data.BundleIdentifier);
+        }
+
         EditorGUILayout.HelpBox(
-            "包名写进 Unity PlayerSettings（Android / iOS / Standalone / WebGL），" +
+            "包名不能手填，由「公司名」+「产品名」自动组合成 com.{公司名}.{产品名}（只读），" +
+            "并写进 Unity PlayerSettings（Android / iOS / Standalone / WebGL），" +
             "各平台构建配置里的包名如有独立设置需要自己同步。",
             MessageType.None);
     }
@@ -194,7 +201,7 @@ public class BurnicleSetupWizardWindow : EditorWindow
     private void Apply()
     {
         var report = BurnicleProjectSetupService.Apply(_data.ProductName, _data.CompanyName,
-            _data.BundleIdentifier, _data.NamespaceRoot, _data.LaunchSceneName);
+            _data.NamespaceRoot, _data.LaunchSceneName);
 
         EditorUtility.DisplayDialog(WindowTitle, string.Join("\n", report), "好");
 
