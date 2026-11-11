@@ -14,12 +14,23 @@ public class BurnicleSetupWizardWindow : EditorWindow
 
     private static GUIStyle s_TitleStyle;
     private static GUIStyle s_SectionStyle;
+    private static GUIStyle s_BlockStyle;
 
     private BurnicleSetupData _data;
     private string _oldNamespaceRoot;
     private string _oldSceneName;
     private int _namespaceFileCount;
     private Vector2 _scroll;
+
+    // 脱离模板仓库：作业放静态字段，关掉窗口再打开还能看到进度
+    private static BurnicleGitJob s_Job;
+    private string _newRemoteUrl = "";
+    private string _originUrl;
+    private bool _pushAfterDetach = true;
+    private string _jobLog = "";
+    private Vector2 _jobScroll;
+
+    private static bool JobRunning => s_Job != null && !s_Job.IsDone;
 
     [MenuItem(MenuPath, false, 560)]
     public static void Open()
@@ -32,6 +43,55 @@ public class BurnicleSetupWizardWindow : EditorWindow
     private void OnEnable()
     {
         Reload();
+        if (JobRunning)
+        {
+            EditorApplication.update += PumpJob;
+        }
+    }
+
+    private void OnDisable()
+    {
+        EditorApplication.update -= PumpJob;
+    }
+
+    private void PumpJob()
+    {
+        if (s_Job == null)
+        {
+            EditorApplication.update -= PumpJob;
+            return;
+        }
+
+        var changed = false;
+        while (s_Job.TryDequeue(out var line))
+        {
+            AppendJobLog(line);
+            changed = true;
+        }
+
+        if (s_Job.IsDone)
+        {
+            EditorApplication.update -= PumpJob;
+            if (s_Job.Succeeded)
+            {
+                _originUrl = _newRemoteUrl;
+                _newRemoteUrl = "";
+            }
+
+            changed = true;
+        }
+
+        if (changed)
+        {
+            Repaint();
+        }
+    }
+
+    private void AppendJobLog(string line)
+    {
+        // 日志只保留最近一段，避免长时间推送把字符串无限拉长
+        _jobLog = _jobLog.Length + line.Length > 12000 ? line : _jobLog + line;
+        _jobLog += "\n";
     }
 
     private void Reload()
@@ -41,6 +101,7 @@ public class BurnicleSetupWizardWindow : EditorWindow
         _oldSceneName = current.LaunchSceneName;
         _data = current;
         _namespaceFileCount = BurnicleProjectSetupService.CountFilesWithNamespaceRoot(_oldNamespaceRoot);
+        _originUrl = BurnicleGitRemoteService.GetOriginUrl();
     }
 
     private void OnGUI()
@@ -50,6 +111,7 @@ public class BurnicleSetupWizardWindow : EditorWindow
         {
             s_TitleStyle = new GUIStyle(EditorStyles.boldLabel) { fontSize = 15 };
             s_SectionStyle = new GUIStyle(EditorStyles.boldLabel) { fontSize = 12 };
+            s_BlockStyle = new GUIStyle(GUI.skin.box) { padding = new RectOffset(10, 10, 8, 10) };
         }
 
         EditorGUILayout.Space();
@@ -61,19 +123,27 @@ public class BurnicleSetupWizardWindow : EditorWindow
 
         _scroll = EditorGUILayout.BeginScrollView(_scroll, GUILayout.ExpandHeight(true));
 
+        EditorGUILayout.BeginVertical(s_BlockStyle);
+        EditorGUILayout.LabelField("设置块 1：项目初始化", s_SectionStyle);
         DrawProjectSection();
         DrawCodeSection();
         DrawPreviewSection();
+        DrawSetupActions();
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space();
+
+        EditorGUILayout.BeginVertical(s_BlockStyle);
+        EditorGUILayout.LabelField("设置块 2：远程仓库", s_SectionStyle);
+        DrawRemoteSection();
+        EditorGUILayout.EndVertical();
 
         EditorGUILayout.EndScrollView();
-
-        DrawActions();
     }
 
     private void DrawProjectSection()
     {
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("1. 项目信息", s_SectionStyle);
+        EditorGUILayout.LabelField("项目信息", EditorStyles.boldLabel);
         _data.ProductName = EditorGUILayout.TextField("产品名", _data.ProductName);
         _data.CompanyName = EditorGUILayout.TextField("公司名", _data.CompanyName);
         _data.BundleIdentifier =
@@ -93,7 +163,7 @@ public class BurnicleSetupWizardWindow : EditorWindow
     private void DrawCodeSection()
     {
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("2. 代码与场景", s_SectionStyle);
+        EditorGUILayout.LabelField("代码与场景", EditorStyles.boldLabel);
         _data.NamespaceRoot = EditorGUILayout.TextField("命名空间根", _data.NamespaceRoot);
         _data.LaunchSceneName = EditorGUILayout.TextField("启动场景名", _data.LaunchSceneName);
         EditorGUILayout.HelpBox(
@@ -115,7 +185,7 @@ public class BurnicleSetupWizardWindow : EditorWindow
     private void DrawPreviewSection()
     {
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("3. 应用预览", s_SectionStyle);
+        EditorGUILayout.LabelField("应用预览", EditorStyles.boldLabel);
 
         var changes = BuildPreview();
         if (changes.Count == 0)
@@ -176,21 +246,118 @@ public class BurnicleSetupWizardWindow : EditorWindow
         return changes;
     }
 
-    private void DrawActions()
+    private void DrawRemoteSection()
+    {
+        var git = BurnicleGitRemoteService.FindGit();
+        EditorGUILayout.LabelField("当前 origin", string.IsNullOrEmpty(_originUrl) ? "（无）" : _originUrl);
+        if (git == null)
+        {
+            EditorGUILayout.HelpBox("没找到 git.exe：请安装 Git 或把它加入 PATH 后重启 Unity。", MessageType.Error);
+        }
+
+        using (new EditorGUI.DisabledScope(JobRunning))
+        {
+            _newRemoteUrl = EditorGUILayout.TextField("新仓库地址", _newRemoteUrl);
+            _pushAfterDetach = EditorGUILayout.Toggle("完成后立即推送", _pushAfterDetach);
+        }
+
+        EditorGUILayout.HelpBox(
+            "旧 origin 直接丢弃，把当前分支重置成单个初始提交（模板的提交历史不再保留），" +
+            "然后推送到新仓库。目标仓库需事先建好且为空。只改 .git 内部状态，不动工作区文件。\n" +
+            "框架子模块保持原样：新仓库 clone 时用 --recurse-submodules，共享者仍需能访问框架库。",
+            MessageType.None);
+
+        if (!string.IsNullOrWhiteSpace(_newRemoteUrl) && !string.IsNullOrWhiteSpace(git) &&
+            !BurnicleGitRemoteService.IsValidRemoteUrl(_newRemoteUrl.Trim()))
+        {
+            EditorGUILayout.HelpBox("只支持 https:// 开头的仓库地址（SSH 地址不行）。", MessageType.Error);
+        }
+
+        var canDetach = !JobRunning && !string.IsNullOrWhiteSpace(git) &&
+                        BurnicleGitRemoteService.IsValidRemoteUrl(_newRemoteUrl.Trim());
+        using (new EditorGUI.DisabledScope(!canDetach))
+        {
+            if (GUILayout.Button("脱离模板仓库", GUILayout.Height(28f)))
+            {
+                ConfirmDetach(_newRemoteUrl.Trim());
+            }
+        }
+
+        DrawJobLog();
+    }
+
+    private void DrawJobLog()
+    {
+        if (s_Job == null)
+        {
+            return;
+        }
+
+        EditorGUILayout.Space();
+        if (JobRunning)
+        {
+            EditorGUILayout.LabelField("状态：执行中…（推送期间请勿关闭窗口）", EditorStyles.boldLabel);
+            if (GUILayout.Button("取消", GUILayout.Height(22f)))
+            {
+                s_Job.Cancel();
+            }
+        }
+        else
+        {
+            EditorGUILayout.LabelField(s_Job.Succeeded ? "状态：完成" : $"状态：失败 — {s_Job.FailureReason}",
+                EditorStyles.boldLabel);
+        }
+
+        _jobScroll = EditorGUILayout.BeginScrollView(_jobScroll, GUILayout.Height(140f));
+        using (new EditorGUI.DisabledScope(true))
+        {
+            EditorGUILayout.TextArea(_jobLog);
+        }
+
+        EditorGUILayout.EndScrollView();
+    }
+
+    private void ConfirmDetach(string remoteUrl)
+    {
+        var push = _pushAfterDetach
+            ? "\n\n完成后会执行：git push -u origin <当前分支>（需要登录时会弹出 Git 凭据窗口）"
+            : "\n\n未勾选推送，完成后需要自己执行 git push。";
+
+        var confirmed = EditorUtility.DisplayDialog(WindowTitle,
+            "确认脱离模板仓库？（不可撤销）\n\n" +
+            $"· 当前分支会重置成单个初始提交（提交信息：“初始提交：{_data.ProductName}”）\n" +
+            $"· 旧 origin（{_originUrl ?? "无"}）会被丢弃，改为 {remoteUrl}\n" +
+            "· 工作区文件不会改动，不会触发重新导入\n" +
+            "· 目标仓库必须已创建且为空，否则推送会被拒绝" + push,
+            "确认脱离", "取消");
+
+        if (!confirmed)
+        {
+            return;
+        }
+
+        _jobLog = "";
+        s_Job = BurnicleGitRemoteService.Detach(remoteUrl, _pushAfterDetach,
+            $"初始提交：{_data.ProductName}");
+        EditorApplication.update += PumpJob;
+    }
+
+    private void DrawSetupActions()
     {
         EditorGUILayout.Space();
         using (new EditorGUILayout.HorizontalScope())
         {
-            if (GUILayout.Button("稍后再说", GUILayout.Height(30f)))
+            if (GUILayout.Button("稍后再说", GUILayout.Height(28f)))
             {
                 Close();
             }
 
             var valid = BurnicleProjectSetupService.IsValidNamespaceRoot(_data.NamespaceRoot)
-                        && !string.IsNullOrWhiteSpace(_data.LaunchSceneName);
+                        && !string.IsNullOrWhiteSpace(_data.LaunchSceneName)
+                        && !JobRunning;
             using (new EditorGUI.DisabledScope(!valid))
             {
-                if (GUILayout.Button("应用设置", GUILayout.Height(30f)))
+                if (GUILayout.Button("应用设置", GUILayout.Height(28f)))
                 {
                     Apply();
                 }
